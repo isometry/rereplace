@@ -1,0 +1,21 @@
+ReReplace v1.0
+- Robin Breathe, 2004/01/13
+
+Reads in a configuration file with name "argv[0].map", lines in the
+following format:
+	^<regex pattern>$ <replace string>
+
+Back-references are allowed in PERL style, e.g.:
+	^www/(foo|bar)$ http://old/$1
+
+Beware config file is parsed by sscanf ("%s %s"), with buffer checking.
+
+Once loaded loops on STDIN translating <regex pattern> to <replace string>,
+returning NULL when there is no match.
+
+A <regex pattern> of "-" will return NULL (as if there had been no match).
+
+Before each replace, the configuration file is checked for changes
+(by mtime), so runtime updates are recognised immediately without HUP.
+
+Any non-standard characters in the input are %XX encoded in the output.

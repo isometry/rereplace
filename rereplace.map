@@ -1,0 +1,7 @@
+^/subdomain					https://subdomain.example.com
+^/email(()|/(()|.*))$		http://mail.example.com/$2$3
+#^/path/to/local$			-
+^/path/to(()|/(()|.*))$		http://remote.example.com/$2$3
+^/bar(()|/(()|.*))$			http://foo.example.com/bar/$2$3
+^(www([^:]*):8443)/(()|.*)$	http://localhost:8000/VirtualHostBase/https/$1/VirtualHostRoot/$3
+^(.*)/([^/]+)/xedit$		$1/externalEdit_/$2
